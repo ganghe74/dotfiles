@@ -1,0 +1,9 @@
+[user]
+	email = ganghe74@kookmin.ac.kr
+	name = ganghe74
+[push]
+	default = simple
+[color]
+	ui = auto
+[core]
+	quotepath = off
