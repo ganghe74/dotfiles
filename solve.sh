@@ -23,6 +23,13 @@ echo "$(cat input.txt)"
 
 ts=$(date +%s%N)
 ./run < input.txt > output.txt
+
+if [[ $? != 0 ]]
+then
+    echo "Runtime Error!"
+    exit 1
+fi
+
 tt=$((($(date +%s%N) - $ts)/1000000))
 
 echo =====output====
