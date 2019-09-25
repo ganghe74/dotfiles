@@ -1,10 +1,12 @@
 if has("syntax")
-	syntax on
+    syntax on
 endif
 
 set autoindent
 set cindent
 
-set nu
-set ts=4
+set number
+set tabstop=4
+set softtabstop=4
 set shiftwidth=4
+set expandtab
