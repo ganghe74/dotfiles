@@ -1,4 +1,24 @@
 #!/bin/bash
+
+if ! options=$(getopt -o r -- "$@")
+then
+    exit 1
+fi
+
+eval set -- "$options"
+
+while true; do
+    case "$1" in
+        -r)
+            echo runtime mode
+            RUNTIME=1
+            shift ;;
+        --)
+            shift
+            break ;;
+    esac
+done
+
 echo Run $1
 
 if [[ $1 == *.cpp ]]
@@ -16,6 +36,12 @@ fi
 if [[ $? != 0 ]]
 then
     exit 1
+fi
+
+if [[ RUNTIME -eq 1 ]]
+then
+    ./run
+    exit $?
 fi
 
 echo =====input=====
