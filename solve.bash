@@ -1,5 +1,11 @@
 #!/bin/bash
 
+if [[ $# == 0 ]]
+then
+    echo no input file
+    exit 1
+fi
+
 if ! options=$(getopt -o r -- "$@")
 then
     exit 1
