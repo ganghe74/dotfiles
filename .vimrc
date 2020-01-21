@@ -1,3 +1,5 @@
+set background=dark
+
 if has("syntax")
     syntax on
 endif
@@ -10,5 +12,3 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
-
-highlight Comment term=bold ctermfg=2
