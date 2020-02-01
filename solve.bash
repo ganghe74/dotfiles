@@ -53,8 +53,9 @@ fi
 echo =====input=====
 echo "$(cat input.txt)"
 
+echo =====output====
 ts=$(date +%s%N)
-./run < input.txt > output.txt
+cat input.txt | stdbuf -o 0 ./run | tee output.txt
 
 if [[ $? != 0 ]]
 then
@@ -64,6 +65,4 @@ fi
 
 tt=$((($(date +%s%N) - $ts)/1000000))
 
-echo =====output====
-echo "$(cat output.txt)"
 echo "Time taken: $tt milliseconds"
