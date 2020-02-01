@@ -6,7 +6,7 @@ then
     exit 1
 fi
 
-if ! options=$(getopt -o r -- "$@")
+if ! options=$(getopt -o ro -- "$@")
 then
     exit 1
 fi
@@ -15,8 +15,12 @@ eval set -- "$options"
 
 while true; do
     case "$1" in
+        -o)
+            echo Output Synchro Mode
+            OUTPUT=1
+            shift ;;
         -r)
-            echo runtime mode
+            echo Runtime Mode
             RUNTIME=1
             shift ;;
         --)
@@ -44,25 +48,35 @@ then
     exit 1
 fi
 
-if [[ RUNTIME -eq 1 ]]
+if [[ $RUNTIME != 1 ]]
 then
-    ./run
-    exit $?
+echo =====input=====
+cat input.txt
 fi
 
-echo =====input=====
-echo "$(cat input.txt)"
-
-echo =====output====
 ts=$(date +%s%N)
-cat input.txt | stdbuf -o 0 ./run | tee output.txt
+if [[ $RUNTIME == 1 ]]
+then
+    ./run
+elif [[ $OUTPUT == 1 ]]
+then
+    echo =====output====
+    cat input.txt | stdbuf -o 0 ./run | tee output.txt
+else
+    ./run < input.txt > output.txt
+fi
 
 if [[ $? != 0 ]]
 then
     echo "Runtime Error!"
     exit 1
 fi
-
 tt=$((($(date +%s%N) - $ts)/1000000))
+
+if [[ $OUTPUT != 1 && $RUNTIME != 1 ]]
+then
+    echo =====output====
+    cat output.txt
+fi
 
 echo "Time taken: $tt milliseconds"
