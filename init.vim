@@ -45,6 +45,10 @@ nnoremap <C-s>      :update<CR>
 inoremap <C-s> <ESC>:update<CR>
 vnoremap <C-s> <ESC>:update<CR>
 
+cabbrev ㅈ write
+cabbrev ㅂ quit
+cabbrev ㅈㅂ wq
+
 set background=dark
 
 if has("syntax")
@@ -60,7 +64,11 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 
-"""""""""""""""""""""""""""""""""""""""
+
+
+"""""""""""""""""""""
+" coc.nvim settings "
+"""""""""""""""""""""
 " if hidden is not set, TextEdit might fail.
 set hidden
 
