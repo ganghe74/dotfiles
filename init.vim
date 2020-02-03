@@ -36,6 +36,8 @@ let g:NERDSpaceDelims = 1
 " let g:ycm_auto_trigger=1
 " Plugin 'neoclide/coc.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'sheerun/vim-polyglot'
+Plug 'dracula/vim', {'as': 'dracula'}
 call plug#end()
 filetype plugin indent on
 
