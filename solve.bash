@@ -63,7 +63,8 @@ then
     echo =====output====
     cat input.txt | stdbuf -o 0 ./run | tee output.txt
 else
-    ./run < input.txt > output.txt
+    # /usr/bin/time -f "Memory usage: %M KB" ./run < input.txt > output.txt
+    MEM_STRING=$( { /usr/bin/time -f "Memory usage: %M KB" ./run < input.txt > output.txt; } 2>&1 )
 fi
 
 if [[ $? != 0 ]]
@@ -79,4 +80,5 @@ then
     cat output.txt
 fi
 
+echo $MEM_STRING
 echo "Time taken: $tt milliseconds"
