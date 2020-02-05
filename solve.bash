@@ -31,9 +31,9 @@ done
 
 echo Run $1
 
-if [[ $1 == *.cpp ]]
+if [[ $1 =~ \.(cpp|cc)$ ]]
 then
-    g++ "$1" -o run -std=gnu++17
+    g++ "$1" -o run -O2 -Wall -static -std=gnu++17
 elif [[ $1 == *.py ]]
 then
     echo '#!/usr/bin/python3' > run
