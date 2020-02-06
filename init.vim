@@ -7,10 +7,6 @@ set hidden
 set nobackup
 set nowritebackup
 
-set cmdheight=2
-
-set updatetime=300
-
 " Plugin
 " need to install junegunnvim-plug
 
@@ -21,20 +17,8 @@ Plug 'vim-airline/vim-airline'
 let g:airline_powerline_fonts = 1
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-"Plugin 'scrooloose/syntastic'
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
 Plug 'scrooloose/nerdcommenter'
 let g:NERDSpaceDelims = 1
-" Plugin 'valloric/youcompleteme'
-" let g:ycm_global_ycm_extra_conf='~/.vim/.ycm_extra_conf.py'
-" let g:ycm_auto_trigger=1
-" Plugin 'neoclide/coc.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
 Plug 'dracula/vim', {'as': 'dracula'}
@@ -52,6 +36,7 @@ cabbrev ㅂ quit
 cabbrev ㅈㅂ wq
 
 set background=dark
+colorscheme dracula
 
 if has("syntax")
     syntax on
