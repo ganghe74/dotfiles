@@ -6,6 +6,7 @@ set showcmd
 set hidden
 set nobackup
 set nowritebackup
+set nofixeol
 
 " Plugin
 " need to install junegunnvim-plug
@@ -26,6 +27,8 @@ Plug 'dracula/vim', {'as': 'dracula'}
 Plug 'lambdalisue/suda.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
+Plug 'sirver/ultisnips'
+let g:UltiSnipsEditSplit="vertical"
 call plug#end()
 filetype plugin indent on
 
