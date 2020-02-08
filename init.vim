@@ -29,6 +29,8 @@ Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire'
 Plug 'sirver/ultisnips'
 let g:UltiSnipsEditSplit="vertical"
+Plug 'felleg/TeTrIs.vim'
+Plug 'johngrib/vim-game-code-break'
 call plug#end()
 filetype plugin indent on
 
