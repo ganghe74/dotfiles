@@ -7,6 +7,7 @@ set hidden
 set nobackup
 set nowritebackup
 set nofixeol
+set history=10000
 
 " Plugin
 " need to install junegunnvim-plug
