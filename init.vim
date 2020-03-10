@@ -8,6 +8,8 @@ set nobackup
 set nowritebackup
 set nofixeol
 set history=10000
+set wildmenu
+set wildmode=full
 
 " Plugin
 " need to install junegunnvim-plug
