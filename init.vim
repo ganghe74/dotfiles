@@ -12,7 +12,7 @@ set wildmenu
 set wildmode=full
 
 " Plugin
-" need to install junegunnvim-plug
+" need to install junegunn/vim-plug
 
 let mapleader=","
 call plug#begin('~/.vim/plugged')
