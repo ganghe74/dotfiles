@@ -7,3 +7,4 @@
 	ui = auto
 [core]
 	quotepath = off
+	editor = nvim
