@@ -10,9 +10,10 @@ set nofixeol
 set history=10000
 set wildmenu
 set wildmode=full
+set mouse=a
 
 " Plugin
-" need to install junegunn/vim-plug
+" need to install junegunnvim-plug
 
 let mapleader=","
 call plug#begin('~/.vim/plugged')
