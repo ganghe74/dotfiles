@@ -13,7 +13,7 @@ set wildmode=full
 set mouse=a
 
 " Plugin
-" need to install junegunnvim-plug
+" need to install junegunn/vim-plug
 
 let mapleader=","
 call plug#begin('~/.vim/plugged')
