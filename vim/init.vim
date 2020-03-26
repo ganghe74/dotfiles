@@ -47,6 +47,7 @@ vnoremap <C-s> <ESC>:update<CR>
 cabbrev ㅈ write
 cabbrev ㅂ quit
 cabbrev ㅈㅂ wq
+cabbrev ㅂㅁ qa
 
 set background=dark
 colorscheme dracula
