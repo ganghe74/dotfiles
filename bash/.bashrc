@@ -7,6 +7,8 @@
 
 PATH=$PATH:~/bin
 
+export GPG_TTY=$(tty)
+
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
