@@ -1,6 +1,7 @@
 [user]
-	email = ganghe74@kookmin.ac.kr
+	email = ganghe74@gmail.com
 	name = ganghe74
+	signingkey = 804158AF35BE6B54
 [push]
 	default = simple
 [color]
@@ -8,3 +9,7 @@
 [core]
 	quotepath = off
 	editor = nvim
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg
