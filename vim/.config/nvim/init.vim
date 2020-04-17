@@ -12,6 +12,7 @@ set wildmenu
 set wildmode=full
 set mouse=a
 set signcolumn=yes
+set cursorline
 
 " Plugin
 if has('nvim')
