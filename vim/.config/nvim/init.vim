@@ -14,9 +14,15 @@ set mouse=a
 set signcolumn=yes
 
 " Plugin
-if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
-    silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs
-        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+if has('nvim')
+    let autoload_path = '~/.local/share/nvim/site/autoload/plug.vim'
+else
+    let autoload_path = '~/.vim/autoload/plug.vim'
+endif
+
+if empty(glob(autoload_path))
+    execute '!curl -fLo ' . autoload_path . ' --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     autocmd VimEnter * PlugInstall --sync
 endif
 
