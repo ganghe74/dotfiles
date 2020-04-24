@@ -4,8 +4,6 @@ set fileencoding=utf-8
 set shell=/bin/bash
 set showcmd
 set hidden
-set nobackup
-set nowritebackup
 set nofixeol
 set history=10000
 set wildmenu
@@ -13,6 +11,9 @@ set wildmode=full
 set mouse=a
 set signcolumn=yes
 set cursorline
+set nobackup
+set nowritebackup
+set noswapfile
 
 " Plugin
 if has('nvim')
@@ -42,6 +43,11 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
 Plug 'dracula/vim', {'as': 'dracula'}
 Plug 'felleg/TeTrIs.vim'
+
+Plug 'sirver/ultisnips'
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 call plug#end()
 
 cabbrev ㅈ write
