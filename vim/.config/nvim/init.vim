@@ -50,6 +50,7 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 call plug#end()
 
+cabbrev W write
 cabbrev ㅈ write
 cabbrev ㅂ quit
 cabbrev ㅈㅂ wq
