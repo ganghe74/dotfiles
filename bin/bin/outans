@@ -1,0 +1,4 @@
+#!/bin/bash
+for f in *.out; do
+    mv -- "$f" "${f%.out}.ans"
+done
