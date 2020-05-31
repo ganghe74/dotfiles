@@ -37,6 +37,7 @@ Plug 'vim-airline/vim-airline'
 let g:airline_powerline_fonts = 1
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
@@ -45,6 +46,7 @@ Plug 'kana/vim-textobj-entire'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
 Plug 'dracula/vim', {'as': 'dracula'}
+Plug 'ryanoasis/vim-devicons'
 Plug 'felleg/TeTrIs.vim'
 Plug 'sirver/ultisnips'
 let g:UltiSnipsExpandTrigger="<tab>"
