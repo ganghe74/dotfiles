@@ -1,0 +1,22 @@
+#!/usr/bin/env python
+import click
+import os
+
+delimiters = {'cpp' : b'//', 'py' : b'#'}
+
+@click.command()
+@click.option('--byte', default=524288, help='wanted byte')
+@click.argument('file', type=click.File('rb'), nargs=1)
+def leng(file, byte):
+    b = file.read()
+    if len(b) >= byte:
+        raise click.ClickException(f'file size already exceeds {byte} byte! ({len(b)})')
+    b = b'\n' + b
+    delimiter = delimiters[os.path.splitext(file.name)[1][1:]]
+    with open(file.name, 'wb') as f:
+        diff = byte - len(b) - len(delimiter)
+        b = delimiter + b'a' * diff + b
+        f.write(b)
+
+if __name__ == '__main__':
+    leng()
