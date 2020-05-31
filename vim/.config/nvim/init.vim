@@ -50,6 +50,7 @@ Plug 'sirver/ultisnips'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+Plug 'yuttie/comfortable-motion.vim'
 call plug#end()
 
 cabbrev W write
