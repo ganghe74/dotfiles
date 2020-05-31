@@ -11,10 +11,14 @@ commands = {
 
 @click.command()
 @click.argument('filename', type=click.Path(exists=True))
-@click.option('--testcase-directory', '-tc', default='testcase', type=click.Path(exists=True))
-@click.option('--find-subdirectory/--no-find-subdirectory', ' /-N', default=True)
-@click.option('--runtime', '-r', is_flag=True)
-def solve(filename, testcase_directory, find_subdirectory, runtime):
+@click.option('--testcase-directory', '-tc', default='testcase', type=click.Path(exists=True),
+              help='testcase directory')
+@click.option('--no-subdirectory', '-N', is_flag = True,
+              help='directly find TCs in "testcase-directory/"' +
+              '\ndefault is "testcase-directory/{filename}"')
+@click.option('--runtime', '-r', is_flag=True, help='Ignore testcase, you write data manually')
+def solve(filename, testcase_directory, no_subdirectory, runtime):
+    """Simple Judge Tool"""
     src_mtime = os.stat(filename).st_mtime
     bin_mtime = os.stat('run').st_mtime if os.path.isfile('run') else 0
     if src_mtime < bin_mtime < src_mtime + 300:
@@ -31,7 +35,7 @@ def solve(filename, testcase_directory, find_subdirectory, runtime):
             raise click.ClickException('Compile Failed.')
 
 
-    if find_subdirectory:
+    if not no_subdirectory:
         testcase_directory = os.path.join(testcase_directory, name)
     testcase_directory.rstrip('/')
     testcase_directory += '/'
