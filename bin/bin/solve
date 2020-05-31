@@ -11,14 +11,16 @@ commands = {
 
 @click.command()
 @click.argument('filename', type=click.Path(exists=True))
-@click.option('-tc', '--testcase-directory', default='testcase', type=click.Path(exists=True))
-def solve(filename, testcase_directory):
+@click.option('--testcase-directory', '-tc', default='testcase', type=click.Path(exists=True))
+@click.option('--find-subdirectory/--no-find-subdirectory', ' /-N', default=True)
+@click.option('--runtime', '-r', is_flag=True)
+def solve(filename, testcase_directory, find_subdirectory, runtime):
     src_mtime = os.stat(filename).st_mtime
     bin_mtime = os.stat('run').st_mtime if os.path.isfile('run') else 0
     if src_mtime < bin_mtime < src_mtime + 300:
         click.echo('Skipping Compile')
     else:
-        _, ext = os.path.splitext(filename)
+        name, ext = os.path.splitext(filename)
         ext = ext[1:]
         if ext not in commands:
             raise click.ClickException(f'Cannot find compile command ({ext})')
@@ -28,21 +30,31 @@ def solve(filename, testcase_directory):
         if return_code != 0:
             raise click.ClickException('Compile Failed.')
 
+
+    if find_subdirectory:
+        testcase_directory = os.path.join(testcase_directory, name)
+    testcase_directory.rstrip('/')
+    testcase_directory += '/'
+
     input_paths = sorted(glob.glob(f'{testcase_directory}/*.in'))
-    if len(input_paths) == 0:
-        click.echo('No input data! Runtime Mode')
+    if not runtime and len(input_paths) == 0:
+        click.secho('No input data!', fg='bright_red')
+        runtime = True
+    if runtime:
+        click.secho('Runtime Mode', fg='bright_cyan')
         os.system('./run')
         return
-    align_length = max([len(s) for s in input_paths]) - len(testcase_directory) - 3
 
+
+    align_length = max([len(s) for s in input_paths]) - len(testcase_directory) - 3
     for input_path in input_paths:
         output_path = input_path[:-3] + '.out'
         answer_path = input_path[:-3] + '.ans'
-        name = input_path[len(testcase_directory):-3]
+        tc_name = input_path[len(testcase_directory):-3]
         with open(input_path, 'r') as input_file, open(output_path, 'w') as output_file:
             result = subprocess.run(['./run'], stdin=input_file, stdout=output_file)
 
-        click.echo(name.rjust(align_length) + ' ', nl=False)
+        click.echo(tc_name.rjust(align_length) + ' ', nl=False)
         if result.returncode != 0:
             click.secho('RTE', fg='bright_blue')
         elif not os.path.isfile(answer_path):
