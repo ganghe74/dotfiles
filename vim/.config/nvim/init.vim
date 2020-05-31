@@ -14,6 +14,9 @@ set cursorline
 set nobackup
 set nowritebackup
 set noswapfile
+set incsearch
+set ignorecase
+set smartcase
 
 " Plugin
 if has('nvim')
@@ -43,7 +46,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
 Plug 'dracula/vim', {'as': 'dracula'}
 Plug 'felleg/TeTrIs.vim'
-
 Plug 'sirver/ultisnips'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
