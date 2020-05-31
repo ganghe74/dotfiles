@@ -15,8 +15,6 @@ commands = {
 def solve(filename, testcase_directory):
     src_mtime = os.stat(filename).st_mtime
     bin_mtime = os.stat('run').st_mtime if os.path.isfile('run') else 0
-    click.echo(f'src_mtime {src_mtime}')
-    click.echo(f'bin_mtime {bin_mtime}')
     if src_mtime < bin_mtime < src_mtime + 300:
         click.echo('Skipping Compile')
     else:
@@ -50,7 +48,7 @@ def solve(filename, testcase_directory):
         elif not os.path.isfile(answer_path):
             click.secho('? (no ans data)', fg='bright_black')
         elif os.system(f'diff -wB {output_path} {answer_path} > /dev/null') != 0:
-            click.secho('TLE', fg='bright_red')
+            click.secho('WA', fg='bright_red')
         else:
             click.secho('AC', fg='bright_green')
 
