@@ -38,6 +38,8 @@ let g:airline_powerline_fonts = 1
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
+let g:NERDTreeChDirMode = 3
+let g:NERDTreeUseTCD = 1
 Plug 'scrooloose/nerdcommenter'
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
@@ -76,3 +78,36 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
+
+function! DeleteEmptyBuffers()
+    let [i, n; empty] = [1, bufnr('$')]
+    while i <= n
+        if bufexists(i) && bufname(i) == ''
+            call add(empty, i)
+        endif
+        let i += 1
+    endwhile
+    if len(empty) > 0
+        exe 'bdelete' join(empty)
+    endif
+endfunction
+
+function! EditTC(name)
+    execute "split" a:name . ".ans"
+    w
+    execute "normal \<c-w>J"
+    execute "vs" a:name . ".out"
+    w
+    execute "vs" a:name . ".in"
+    w
+endfunction
+
+function! EditTCs(...)
+    for s in a:000
+        call EditTC(s)
+    endfor
+    call DeleteEmptyBuffers()
+endfunction
+
+command! -nargs=+ Et call EditTCs(<f-args>)
+cnoreabbrev et Et
