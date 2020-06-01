@@ -38,6 +38,7 @@ let g:airline_powerline_fonts = 1
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
+map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeChDirMode = 3
 let g:NERDTreeUseTCD = 1
 Plug 'scrooloose/nerdcommenter'
