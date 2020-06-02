@@ -21,11 +21,11 @@ def solve(filename, testcase_directory, no_subdirectory, runtime):
     """Simple Judge Tool"""
     src_mtime = os.stat(filename).st_mtime
     bin_mtime = os.stat('run').st_mtime if os.path.isfile('run') else 0
+    name, ext = os.path.splitext(filename)
+    ext = ext[1:]
     if src_mtime < bin_mtime < src_mtime + 300:
         click.echo('Skipping Compile')
     else:
-        name, ext = os.path.splitext(filename)
-        ext = ext[1:]
         if ext not in commands:
             raise click.ClickException(f'Cannot find compile command ({ext})')
         command = commands[ext]%filename
