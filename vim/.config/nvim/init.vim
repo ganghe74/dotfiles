@@ -106,12 +106,9 @@ endfunction
 
 function! EditTC(name)
     execute "split" a:name . ".ans"
-    w
     execute "normal \<c-w>J"
     execute "vs" a:name . ".out"
-    w
     execute "vs" a:name . ".in"
-    w
 endfunction
 
 function! EditTCs(...)
@@ -119,6 +116,7 @@ function! EditTCs(...)
         call EditTC(s)
     endfor
     call DeleteEmptyBuffers()
+    execute "NERDTreeClose"
 endfunction
 
 command! -nargs=+ Et call EditTCs(<f-args>)
