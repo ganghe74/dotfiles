@@ -56,6 +56,8 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 Plug 'yuttie/comfortable-motion.vim'
+Plug 'lambdalisue/suda.vim'
+let g:suda_smart_edit = 1
 call plug#end()
 
 cabbrev W write
