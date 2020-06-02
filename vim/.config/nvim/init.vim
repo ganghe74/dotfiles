@@ -71,6 +71,10 @@ nnoremap <C-s>      :update<CR>
 inoremap <C-s> <ESC>:update<CR>
 vnoremap <C-S> <ESC>:update<CR>
 
+nnoremap <F5>      :update<CR>:!solve %<CR>
+inoremap <F5> <ESC>:update<CR>:!solve %<CR>
+vnoremap <F5> <ESC>:update<CR>:!solve %<CR>
+
 set background=dark
 colorscheme dracula
 
