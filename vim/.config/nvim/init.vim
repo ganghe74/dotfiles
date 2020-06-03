@@ -109,20 +109,8 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 
-function! DeleteEmptyBuffers()
-    let [i, n; empty] = [1, bufnr('$')]
-    while i <= n
-        if bufexists(i) && bufname(i) == ''
-            call add(empty, i)
-        endif
-        let i += 1
-    endwhile
-    if len(empty) > 0
-        exe 'bdelete' join(empty)
-    endif
-endfunction
-
 function! EditTC(name)
+    silent execute "!touch" a:name . ".in" a:name . ".out" a:name . ".ans"
     execute "split" a:name . ".ans"
     execute "normal \<c-w>J"
     execute "vs" a:name . ".out"
@@ -130,10 +118,12 @@ function! EditTC(name)
 endfunction
 
 function! EditTCs(...)
+    if bufname() == ''
+        e .
+    endif
     for s in a:000
         call EditTC(s)
     endfor
-    call DeleteEmptyBuffers()
     execute "NERDTreeClose"
 endfunction
 
