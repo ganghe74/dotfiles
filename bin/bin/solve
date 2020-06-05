@@ -6,7 +6,7 @@ import subprocess
 
 commands = {
     'cpp': 'g++ %s -o run -O2 -Wall -static -std=gnu++17',
-    'py': 'python3 -c "import py_compile; py_compile.compile(%s)'
+    'py': 'echo "#!/usr/bin/env python3" > run; cat %s >> run; chmod 777 run; python3 -c "import py_compile; py_compile.compile(\'run\')"'
 }
 
 @click.command()
