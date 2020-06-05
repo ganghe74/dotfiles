@@ -37,6 +37,8 @@ def solve(filename, testcase_directory, no_subdirectory, runtime, timelimit):
             raise click.ClickException('Compile Failed.')
 
 
+    if '_' in name:
+        name = name[:name.find('_')]
     if not no_subdirectory:
         testcase_directory = os.path.join(testcase_directory, name)
     testcase_directory.rstrip('/')
@@ -52,14 +54,13 @@ def solve(filename, testcase_directory, no_subdirectory, runtime, timelimit):
         return
 
 
-    align_length = max([len(s) for s in input_paths]) - len(testcase_directory) - 3
     maxtime = 0
+    align_length = max([len(s) for s in input_paths]) - len(testcase_directory) - 3
     for input_path in input_paths:
         output_path = input_path[:-3] + '.out'
         answer_path = input_path[:-3] + '.ans'
         tc_name = input_path[len(testcase_directory):-3]
         click.echo(tc_name.rjust(align_length) + ' ', nl=False)
-
         start_time = time.time_ns()
         with open(input_path, 'r') as input_file, open(output_path, 'w') as output_file:
             try:
