@@ -32,6 +32,7 @@ def solve(filename, testcase_directory, no_subdirectory, runtime, timelimit):
             raise click.ClickException(f'Cannot find compile command ({ext})')
         command = commands[ext]%filename
         click.echo(command)
+        os.system('touch %s'%filename)
         return_code = os.system(command)
         if return_code != 0:
             raise click.ClickException('Compile Failed.')
